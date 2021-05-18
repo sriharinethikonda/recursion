@@ -1,0 +1,24 @@
+#include <iostream>
+#include<cstring>
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+int palindrome(int l,string s){
+    if(l>=n/2)
+        return 1;
+    if(s[l]!=s[n-1-l])
+          return 0;
+    else
+        return palindrome(l+1,s);
+}
+int main(){
+   string s;
+   cin>>s;
+   n=s.length();
+    if(palindrome(0,s))
+        cout<<"palindrome";
+    else
+        cout<<"not a palindrome";
+    
+    return 0;
+}
