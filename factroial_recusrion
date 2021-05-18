@@ -1,0 +1,28 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+int main() {
+	long long int N=1000001;
+	long long int prefix[1000001]={0};
+	 int m=pow(10,9)+7;
+	prefix[1]=1;
+	for(int i=2;i<=N;i++){
+	    prefix[i]=((prefix[i-1]*i)%m);
+	}
+	    int t;
+	    cin>>t;
+	 
+	 while(t--){
+	     int n;
+	      cin>>n;
+          if(n==1||n==0)
+	       cout<<1<<"\n";
+		   else if(n>=100000)
+		   	cout<<prefix[n]%m<<"\n";
+	      else
+	    	cout<<prefix[n]<<"\n";
+	  }
+	
+return 0;
+}
