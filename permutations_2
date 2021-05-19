@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool shouldSwap(int a[], int start, int curr)
+{
+    for (int i = start; i < curr; i++)
+        if (a[i] == a[curr])
+            return 0;
+    return 1;
+}
+ 
+void findPermutations(int a[], int index, int n)
+{
+    if (index >= n) {
+        for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+        }
+        cout<<"\n";
+        return;
+    }
+ 
+    for (int i = index; i < n; i++) {
+ 
+        bool check = shouldSwap(a, index, i);
+        if (check) {
+            swap(a[index], a[i]);
+            findPermutations(a, index + 1, n);
+            swap(a[index], a[i]);
+        }
+    }
+}
+
+int main()
+{
+    int a[]={1,1,2};
+    int n = sizeof(a)/sizeof(int);
+    findPermutations(a, 0, n);
+    return 0;
+}
