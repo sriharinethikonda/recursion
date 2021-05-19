@@ -1,0 +1,31 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int N;
+int n;
+void printarraycombinations(int index,int N,vector <int> &ds,int a[]){
+    if(index==n){
+        if(N==0){
+            for(auto it:ds){
+                cout<<it<<" ";          
+            }
+            cout<<"\n";
+        }
+        return;
+    }
+    if(a[index]<=N){
+        ds.push_back(a[index]);
+        printarraycombinations(index,N-a[index],ds,a);
+        ds.pop_back();
+    }
+    printarraycombinations(index+1,N,ds,a);
+}
+int main(){
+    cin>>n>>N;
+    int a[n];
+    vector <int> ans;
+    for(int i=0;i<n;i++)
+       cin>>a[i];
+    printarraycombinations(0,N,ans,a);
+    return 0;
+}
