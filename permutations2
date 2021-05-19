@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+
+void printPermituations(int a[],vector<int>&ds,int frq[])
+{
+    int m=ds.size();
+ if(n==m){
+            for(auto it:ds)
+            {
+                cout<<it<<" ";
+            }
+            cout<<endl;
+             return;
+        }
+       
+    for(int i=0;i<n;i++)
+    {
+        if(frq[i]==0)
+        {
+            frq[i]=1;
+            ds.push_back(a[i]);
+            printPermituations(a,ds,frq);
+            ds.pop_back();
+                    frq[i]=0;
+        }
+    }
+}
+int main() {
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+        cin>>a[i];
+	vector <int> ans;
+	int freq[n]={0};
+	printPermituations(a,ans,freq);
+	return 0;
+}
